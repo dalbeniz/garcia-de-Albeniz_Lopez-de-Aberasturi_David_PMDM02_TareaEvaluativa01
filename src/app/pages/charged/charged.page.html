@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis noticias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- 
+    Utilizamos *ngFor para generar componentes repetidos, los items de una lista
+    Leemos los valores de cada item de un array de objetos JSON definidos en el fichero .ts
+  -->
+  <ion-list *ngFor="let articulo of gestionArticulos.getArticulosCargados()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{articulo.title}}</ion-card-title>
+        <ion-card-subtitle>{{articulo.name}}</ion-card-subtitle>
+      </ion-card-header>
+      <img  src="{{articulo.urlToImage}}" />
+      
+  <ion-card-content>
+    {{articulo.description}}
+  </ion-card-content>
+  <a href="{{articulo.url}}">LEER</a>
+  <ion-icon name="trash" (click)="borrar(articulo)"></ion-icon>
+
+  
+    </ion-card>
+    
+  </ion-list>
+  
+</ion-content>
